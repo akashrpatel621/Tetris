@@ -22,12 +22,20 @@ move down, and rotate. These functions will be used to control the terminal as i
 if a row is filled is needed and also a method to delete a row is trivial. A gravity simulator will also be needed
 to move the terminals down as if they were falling at a constant rate.
 
-For the external library, I will be using the Open Graphics Library (OpenGL) which is an API for rendering 2D and 
-3D vector graphics. This API usually interacts with the graphics processing unit to achieve hardware accelerated
-rendering. I will be using OpenGL to create the tetrominoes and also the game board graphics for Tetris. I will 
-also use OpenGL to manipulate the tetrominoes while they are falling. While the game is running I want to create 
-a side panel with the current score and the time elapsed. I would also like to add background music to the game 
-using the OfBaseSoungPlayer library to play music.  
+For the graphical componets of Tetris I will be using of graphics library and this will allow me to create the 2D 
+tetrominoes that will be needed in the game. For the rate the tetrominoes will fall I will be using of 2D figures
+which is a physics libary that will detect collisions. While the game is running I want to create a side panel with 
+the current score and the time elapsed. I would also like to add background music to the game 
+using the OfBaseSoungPlayer library to play music. 
+
+**Timeline**
+Week 1: Read open frameworks documentation and get familiar with using to create Tetris. Be able to use of graphics to 
+create tetrominoes and have them show up on the screen. 
+
+Week 2: Work on game logic and connecting that to the graphics of the tetrominoes. Create user interface with opening page.
+use physics libary to create the effect of the tetrominoes falling. 
+
+Week 3: Finish up game logic and overall game. Add score board if time permits. 
 
 **Resources**
 
@@ -39,3 +47,4 @@ https://www.youtube.com/watch?v=AwVVt9Ht5Q8
 
 Creating shapes with OpenGL:
 https://www.youtube.com/watch?v=EIpxcNl2WJU
+block2D
