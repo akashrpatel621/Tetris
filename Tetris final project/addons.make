@@ -1,2 +1,0 @@
-ofx2DFigures
-ofxGui

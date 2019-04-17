@@ -28,6 +28,7 @@ according to gravity. I might also use this library to detect collisions. While 
 with the current score and the time elapsed. I would also like to add background music to the game using the OfBaseSoungPlayer library
 
 **Timeline**
+
 Week 1: Read open frameworks documentation and get familiar with using it to create Tetris. Be able to use the graphics library to create 
 the game board on which tetris will be played on and also the one unit square that will be the basis for the whole game. 
 
