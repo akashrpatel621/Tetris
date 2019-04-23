@@ -9,6 +9,7 @@ public:
 	~GameBlock();
 	int x;
 	int y;
+
 	ofColor fill;
 	ofColor stroke;
 

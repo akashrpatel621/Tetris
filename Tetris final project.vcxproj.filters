@@ -7,6 +7,12 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofx2DFigures\src\BoundingBox.cpp">
       <Filter>addons\ofx2DFigures\src</Filter>
     </ClCompile>
@@ -58,6 +64,12 @@
     <ClCompile Include="gameboard.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="tetronimo_shape.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="tetromino.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -80,6 +92,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\ofApp.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -141,6 +156,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="gameblock.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="tetromino.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="tetronimo_shape.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,7 +13,7 @@ public:
 
 	static void draw();
 	static void InitiateBoard(int rows, int cols);
-	static void SlideDown(int rowIndex, int cols);
+	static void SlideDown(int row, int cols);
 	static void RemoveRow(int rows, int cols);
 private:
 };

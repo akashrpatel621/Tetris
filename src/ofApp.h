@@ -1,6 +1,7 @@
 #pragma once
 #include "C:\Users\akashpatel\Desktop\of_v0.10.1_vs2017_release\apps\myApps\Tetris final project\gameboard.h"
 #include "ofMain.h"
+#include "C:\Users\akashpatel\Desktop\of_v0.10.1_vs2017_release\apps\myApps\Tetris final project\tetromino.h"
 
 class ofApp : public ofBaseApp{
 
@@ -24,6 +25,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-
+		Tetromino tetromino;
+		ofSoundPlayer sound;
 };
 

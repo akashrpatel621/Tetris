@@ -27,12 +27,32 @@ void GameBoard::draw()
 	}
 }
 
-void GameBoard::SlideDown(int rowIndex, int cols)
+void GameBoard::SlideDown(int row, int cols)
 {
-	// shift all blocks down
+	for (int i = row; i >= 0; i--) {
+		for (int j = 0; j < cols; j++) {
+			if (i - 1 >= 0) {
+				board[j][i].fill = board[j][i - 1].fill;
+			}
+			else {
+				board[j][0].fill = ofColor::black;
+			}
+		}
+	}
 }
 
 void GameBoard::RemoveRow(int cols, int rows)
 {
-	// replaces a full row with black spaces and also shifts down the other blocks. 
+	for (int i = rows - 1; i >= 0; i--) {
+		bool isComplete = true;
+		for (int j = 0; j < cols; j++) {
+			if (board[j][i].fill == ofColor::black) {
+				isComplete = false;
+			}
+		}
+		if (isComplete) {
+			GameBoard::SlideDown(i, cols);
+			i++;
+		}
+	}
 }
