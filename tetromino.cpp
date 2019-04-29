@@ -1,12 +1,9 @@
 #include "tetromino.h"
+#include "ofApp.h"
 
 Tetromino::Tetromino()
 {
 	reset();
-}
-
-Tetromino::~Tetromino()
-{
 }
 
 void Tetromino::draw()
@@ -21,46 +18,158 @@ void Tetromino::reset()
 	tiles.clear();
 	vector<ofPoint> random = Shape::GetRandomShape();
 	CreateTetronimo(random);
-	totalDrops = 0;
 }
 
-vector<GameBlock> Tetromino::calculateRotationCW()
+//code derived from 
+//https://stackoverflow.com/questions/233850/tetris-piece-rotation-algorithm.
+vector<GameBlock> Tetromino::Rotate()
 {
-	return vector<GameBlock>();
+	vector<GameBlock> rotatedTiles = tiles;
+
+	int X = rotatedTiles[0].x;
+	int Y = rotatedTiles[0].y;
+
+	for (int i = 0; i < rotatedTiles.size(); i++) {
+		if (X > rotatedTiles[i].x) {
+			X = rotatedTiles[i].x;
+		}
+		if (Y > rotatedTiles[i].y) {
+			Y = rotatedTiles[i].y;
+		}
+	}
+
+	X += GameBlock::k_width;
+	Y += GameBlock::k_height;
+
+	int translatedX;
+	int translatedY;
+	int rotatedX;
+	int rotatedY;
+
+	for (int i = 0; i < rotatedTiles.size(); i++) {
+
+		translatedX = rotatedTiles[i].x - X;
+		translatedY = rotatedTiles[i].y - Y;
+
+		rotatedX = translatedY;
+		rotatedY = translatedX * -1;
+
+		rotatedTiles[i].x = rotatedX + X;
+		rotatedTiles[i].y = rotatedY + Y;
+	}
+	return rotatedTiles;
 }
 
-vector<GameBlock> Tetromino::calculateRotationCCW()
+
+vector<GameBlock> Tetromino::MoveLeft()
 {
-	return vector<GameBlock>();
+	vector<GameBlock> translatedTiles = tiles;
+
+	for (int i = 0; i < translatedTiles.size(); i++) {
+		translatedTiles[i].x = translatedTiles[i].x - GameBlock::k_width;
+	}
+	return translatedTiles;
 }
 
-vector<GameBlock> Tetromino::calculateTranslationL()
+vector<GameBlock> Tetromino::MoveRight()
 {
-	return vector<GameBlock>();
+	vector<GameBlock> translatedTiles = tiles;
+
+	for (int i = 0; i < translatedTiles.size(); i++) {
+		translatedTiles[i].x += GameBlock::k_width;
+	}
+	return translatedTiles;
 }
 
-vector<GameBlock> Tetromino::calculateTranslationR()
+vector<GameBlock> Tetromino::MoveDown()
 {
-	return vector<GameBlock>();
+	vector<GameBlock> translatedTiles = tiles;
+
+	for (int i = 0; i < translatedTiles.size(); i++) {
+		translatedTiles[i].y += GameBlock::k_height;
+	}
+	return translatedTiles;
 }
 
-vector<GameBlock> Tetromino::calculateTranslationD()
+bool Tetromino::RightCollison(vector<GameBlock> transformedTiles, int width)
 {
-	return vector<GameBlock>();
+	for (int i = 0; i < transformedTiles.size(); i++) {
+		if (transformedTiles[i].x >= width) {
+			return true;
+		}
+		else {
+			int x = transformedTiles[i].x / 40;
+			int y = transformedTiles[i].y / 40;
+			GameBlock t = GameBoard::board[x][y];
+			if (t.fill != ofColor::black) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
-void Tetromino::transform(vector<GameBlock> transformedTiles)
+bool Tetromino::LeftCollison(vector<GameBlock> transformedTiles, int width)
 {
+	for (int i = 0; i < transformedTiles.size(); i++) {
+		if (transformedTiles[i].x < 0) {
+			return true;;
+		}
+		else {
+			
+			int x = transformedTiles[i].x / 40;
+			int y = transformedTiles[i].y / 40;
+			GameBlock t = GameBoard::board[x][y];
+			if (t.fill != ofColor::black) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
-void Tetromino::drop(vector<GameBlock> transformedTiles)
+bool Tetromino::BottomCollison(vector<GameBlock> transformedTiles, int width)
 {
+	
+	for (int i = 0; i < transformedTiles.size(); i++) {
+		if (transformedTiles[i].y >= width) {
+			return true; // there is a collision on the bottom.
+		}
+		else
+		{
+			
+			int x = transformedTiles[i].x / 40;
+			int y = transformedTiles[i].y / 40;
+			GameBlock t = GameBoard::board[x][y];
+			if (t.fill != ofColor::black) {
+				return true;
+			}
+		}
+	}
+	return false;
 }
 
-void Tetromino::CreateTetronimo(vector<ofPoint> randomshape)
+bool Tetromino::GameOver()
 {
+	for (int i = 0; i <tiles.size(); i++) {
+		if (tiles[i].y == 0) {
+			return true;
+		}
+	}
+	return false;
+}
 
-	ofColor colors[5] = {
+void Tetromino::HandleBottomCollision(Tetromino tetromino)
+{
+	for (int i = 0; i < tetromino.tiles.size(); i++) {
+		GameBoard::board[tetromino.tiles[i].x / GameBlock::k_width][tetromino.tiles[i].y / GameBlock::k_height].fill = tetromino.tiles[i].fill;
+	}
+	GameBoard::RemoveRow(ofApp::numCols , ofApp::numRows);
+}
+
+ofColor Tetromino::TetrominoColor()
+{
+	vector <ofColor> colors = {
 		ofColor::blue,
 		ofColor::red,
 		ofColor::orange,
@@ -68,9 +177,17 @@ void Tetromino::CreateTetronimo(vector<ofPoint> randomshape)
 		ofColor::yellow
 	};
 
-	int color_index = ofRandom(0, randomshape.size());
+	int color_index = ofRandom(0, colors.size());
+	return colors[color_index];
+	
+}
 
+void Tetromino::CreateTetronimo(vector<ofPoint> randomshape)
+{
+	ofColor random_color = TetrominoColor();
 	for (int i = 0; i < randomshape.size(); i++) {
-		tiles.push_back(GameBlock(randomshape[i], colors[color_index], ofColor::white));
+		tiles.push_back(GameBlock(ofPoint(randomshape[i].x + 240, randomshape[i].y), random_color, ofColor::white));
 	}
 }
+
+

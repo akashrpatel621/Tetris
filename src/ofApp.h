@@ -8,10 +8,17 @@ class ofApp : public ofBaseApp{
 	public:
 		static int numCols;
 		static int numRows;
+		int speed;
+        //double time;
+
+		std::string score;
+		std::string time_elapsed;
+		std::string level;
 
 		void setup();
 		void update();
 		void draw();
+		void end();
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -24,8 +31,30 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+		void convertToString(int score);
+		void TimeToString(double time);
+		void LevelToString(int level);
 
 		Tetromino tetromino;
+
 		ofSoundPlayer sound;
+		ofSoundPlayer soundclear;
+		ofSoundPlayer sounddrop;
+		ofSoundPlayer soundgameover;
+		
+		ofTrueTypeFont font;
+
+		ofImage background;
+		ofImage game_over;
+
+		
+
+		bool gamePaused;
+		bool gameOver;
+		bool musicpuased;
+
+		
+
+		unsigned long long frameNumber;
 };
 

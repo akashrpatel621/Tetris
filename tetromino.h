@@ -1,28 +1,35 @@
 #pragma once
 #include "ofMain.h"
 #include "gameblock.h"
+#include "gameboard.h"
 #include "tetronimo_shape.h"
 
 
 
 class Tetromino {
 public:
+
 	Tetromino();
-	~Tetromino();
 	void draw();
 	void reset();
 
-	vector<GameBlock> calculateRotationCW();
-	vector<GameBlock> calculateRotationCCW();
-	vector<GameBlock> calculateTranslationL();
-	vector<GameBlock> calculateTranslationR();
-	vector<GameBlock> calculateTranslationD();
+	vector<GameBlock> Rotate();
+	vector<GameBlock> MoveLeft();
+	vector<GameBlock> MoveRight();
+	vector<GameBlock> MoveDown();
 
-	void transform(vector<GameBlock> transformedTiles);
-	void drop(vector<GameBlock> transformedTiles);
-	vector<GameBlock> tiles;
+	bool RightCollison(vector<GameBlock> transformedTiles, int width);
+	bool LeftCollison(vector<GameBlock> transformedTiles, int width);
+	bool BottomCollison(vector<GameBlock> transformedTiles, int width);
 
-	int totalDrops = 0;
+	bool GameOver();
+	
+	void HandleBottomCollision(Tetromino tetronimo);
 	void CreateTetronimo(vector<ofPoint> randomshape);
+
+	ofColor TetrominoColor();
+
+	vector<GameBlock> tiles;
+	
 private:
 };
