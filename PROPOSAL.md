@@ -21,30 +21,25 @@ the game. Some of the methods needed for Tetris to function would be move right,
 will be used to control the terminal as it falls. Also, a method to check if a row is filled is needed and also a method to delete
 a row is trivial. A gravity simulator will also be needed to move the terminals down as if they were falling at a constant rate.
 
-For the graphical components of Tetris I will be using of graphics library (of graphics) and this will allow me to create the 2D 
+For the graphical components of Tetris, I will be using of graphics library (of graphics) and this will allow me to create the 2D 
 tetrominoes that will be needed in the game. The graphics library will also allow me to create the game board, which the tetrominoes
-will be falling in. I will also be using Box2D which is a 2D physics engine for games, and it will allow me to drop the tetrominoes
-according to gravity. I might also use this library to detect collisions. While the game is running I want to create a side panel 
-with the current score and the time elapsed. I would also like to add background music to the game using the OfBaseSoungPlayer library
+will be falling in. Initially, I was thinking about using the physics library, Box 2d to create the effect of the tetrominoes falling and colliding, however, this was not needed. Instead, I will detect collisions myself. I will also be using the sound library to create sounds when the tetrominoes reach the floor, when a row is deleted, and when the game ends. I plan to have a scoreboard on the side panel and also the time elapsed in the current game. If time permits I would also like to implement a way to preview the next tetromino that will be generated.  
 
 **Timeline**
-Week 1: Read open frameworks documentation and get familiar with using it to create Tetris. Be able to use the graphics library to create 
-the game board on which tetris will be played on and also the one unit square that will be the basis for the whole game. 
 
-Week 2: Use the square made last week to create all the tetrominoes. Work on game logic and connecting that to the graphics of the tetrominoes.
-Use physics libary to create the effect of the tetrominoes falling due to gravity. A goal for this week is to finish up the game loop to get it 
-partly functioning. Create tests for the code that is written.
+Week 1: Read open frameworks documentation and get familiar with using it to create Tetris. Be able to use the graphics library to create the game board on which tetris will be played on and also the one unit square that will be the basis for the whole game. Explore the sound library and be able to make a sound when a key is pressed. 
 
-Week 3: Finish up game logic and overall game. Heavly test the project and fix any bugs that occur. If time permits I will want to add a score
-board and also a time elapsed time. 
+Week 2: Use the squares made last week to create all the tetrominoes.Implement a way to control the tetrominoes to rotate and move though user imputs. Create tests for the code that is written. 
+
+Week 3: Finish up game logic and overall game. Heavly test the project and fix any bugs that occur. Add sounds for specific events in the game. If time permits I will want to add a scoreboard and also a time elapsed time. 
 
 **Resources**
 
 Tetris algorithem overview:
 http://javilop.com/gamedev/tetris-tutorial-in-c-platform-independent-focused-in-game-logic-for-beginners/
 
-Block2D documentation and tutorials:
-https://box2d.org/about/
+Of Sound documentation and tutorials:
+https://openframeworks.cc/ofBook/chapters/sound.html
 
 OpenFrameworks documentation:
 https://openframeworks.cc/documentation/
