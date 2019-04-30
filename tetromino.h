@@ -8,7 +8,6 @@
 
 class Tetromino {
 public:
-
 	Tetromino();
 	void draw();
 	void reset();
@@ -30,6 +29,4 @@ public:
 	ofColor TetrominoColor();
 
 	vector<GameBlock> tiles;
-	
-private:
 };
