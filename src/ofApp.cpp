@@ -76,6 +76,7 @@ void ofApp::draw(){
 	GameBoard::draw();
 	tetromino.draw();
 
+	// For loading and updating score panel.
 	ofPushStyle(); {
 		ofSetColor(ofColor::black);
 		ofDrawRectangle(625, 50, 150, 300);

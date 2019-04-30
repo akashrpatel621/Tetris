@@ -35,23 +35,68 @@ TEST_CASE("Error in shifting left") {
 	Tetromino tetromino;
 	vector <GameBlock> translated_tiles = tetromino.MoveLeft();
 	
-	REQUIRE(tetromino.tiles[0].x - GameBlock::k_width == translated_tiles[0].x);
-	REQUIRE(tetromino.tiles[0].y == translated_tiles[0].y);
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		REQUIRE(tetromino.tiles[i].x - GameBlock::k_width == translated_tiles[i].x);
+		REQUIRE(tetromino.tiles[i].y == translated_tiles[i].y);
+	}	
+}
+
+TEST_CASE("Error in shifting left twice") {
+	Tetromino tetromino;
+	vector <GameBlock> original_tiles = tetromino.tiles;
+	vector <GameBlock> translated_tiles = tetromino.MoveLeft();
+	tetromino.tiles = translated_tiles;
+	translated_tiles = tetromino.MoveLeft();
+
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		REQUIRE(original_tiles[i].x - (2 * GameBlock::k_width) == translated_tiles[i].x);
+		REQUIRE(original_tiles[i].y == translated_tiles[i].y);
+	}
 }
 
 TEST_CASE("Error in shifting right") {
 	Tetromino tetromino;
 	vector <GameBlock> translated_tiles = tetromino.MoveRight();
 
-	REQUIRE(tetromino.tiles[0].x  == translated_tiles[0].x - GameBlock::k_width);
-	REQUIRE(tetromino.tiles[0].y == translated_tiles[0].y);
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		REQUIRE(tetromino.tiles[i].x == translated_tiles[i].x - GameBlock::k_width);
+		REQUIRE(tetromino.tiles[i].y == translated_tiles[i].y);
+	}
 }
 
+TEST_CASE("Error in shifting right twice") {
+	Tetromino tetromino;
+	vector <GameBlock> original_tiles = tetromino.tiles;
+	vector <GameBlock> translated_tiles = tetromino.MoveRight();
+	tetromino.tiles = translated_tiles;
+	translated_tiles = tetromino.MoveRight();
+
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		REQUIRE(original_tiles[i].x == translated_tiles[i].x -  2 * GameBlock::k_width);
+		REQUIRE(original_tiles[i].y == translated_tiles[i].y);
+	}
+}
 TEST_CASE("Error in shifting down") {
 	Tetromino tetromino;
 	vector <GameBlock> translated_tiles = tetromino.MoveDown();
 
-	REQUIRE(tetromino.tiles[0].x == translated_tiles[0].x);
-	REQUIRE(tetromino.tiles[0].y == translated_tiles[0].y - GameBlock::k_height);
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		REQUIRE(tetromino.tiles[0].x == translated_tiles[0].x);
+		REQUIRE(tetromino.tiles[0].y == translated_tiles[0].y - GameBlock::k_height);
+	}
+}
+	
+
+TEST_CASE("Error in shifting down twice") {
+	Tetromino tetromino;
+	vector <GameBlock> original_tiles = tetromino.tiles;
+	vector <GameBlock> translated_tiles = tetromino.MoveDown();
+	tetromino.tiles = translated_tiles;
+	translated_tiles = tetromino.MoveDown();
+
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		REQUIRE(original_tiles[i].x == translated_tiles[i].x);
+		REQUIRE(original_tiles[i].y == translated_tiles[i].y - 2 * GameBlock::k_height);
+	}
 }
 
