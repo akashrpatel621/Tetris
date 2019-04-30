@@ -7,8 +7,8 @@
 class ofApp : public ofBaseApp{
 
 	public:
-		static int num_cols; 
-		static int num_rows;
+		static int num_cols; // Number of columns on the game board.
+		static int num_rows; // Number of rows on the game board.
 		int speed; // Speed that is initially set for the start of the game.
 	
 		const int max_game_speed = 350; // Max speed the tetrominoes can fall at. 

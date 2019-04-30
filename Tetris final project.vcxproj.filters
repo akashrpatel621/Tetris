@@ -70,6 +70,9 @@
     <ClCompile Include="tetrominoshape.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="tetris_test.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -164,8 +167,15 @@
     <ClInclude Include="tetrominoshape.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="catch.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tests.runsettings" />
+    <None Include="ReferenceTests.runsettings" />
   </ItemGroup>
 </Project>

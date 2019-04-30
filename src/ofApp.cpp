@@ -31,8 +31,12 @@ void ofApp::update() {
 	
 	//Convert integers to strings to print out.
 	convertToString(GameBoard::score);
-	TimeToString(ofGetElapsedTimef());
 	LevelToString(GameBoard::level);
+
+	// Updating time elapsed.
+	if (!gameOver && !gamePaused) {
+		TimeToString(ofGetElapsedTimef());
+	}
 
 	//Set a max speed for the rate the tetrominoes fall. 
 	if (GameBoard::game_speed > max_game_speed) {

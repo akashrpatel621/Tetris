@@ -206,7 +206,7 @@ void Tetromino::HandleBottomCollision(Tetromino tetromino)
 	for (int i = 0; i < tetromino.tiles.size(); i++) {
 		GameBoard::board[tetromino.tiles[i].x / GameBlock::k_width][tetromino.tiles[i].y / GameBlock::k_height].fill = tetromino.tiles[i].fill;
 	}
-	GameBoard::RemoveRow(ofApp::num_cols , ofApp::num_rows);
+	GameBoard::RemoveRow(15 , 23);
 }
 
 ofColor Tetromino::TetrominoColor()

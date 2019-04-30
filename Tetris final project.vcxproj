@@ -182,8 +182,15 @@
   <ItemGroup>
     <ClCompile Include="gameblock.cpp" />
     <ClCompile Include="gameboard.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="tetris_test.cpp" />
+    <ClCompile Include="src\main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\ofApp.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofx2DFigures\src\BoundingBox.cpp" />
     <ClCompile Include="..\..\..\addons\ofx2DFigures\src\CollisionHelper.cpp" />
     <ClCompile Include="..\..\..\addons\ofx2DFigures\src\Figure.cpp" />
@@ -203,9 +210,13 @@
     <ClCompile Include="tetrominoshape.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="catch.h" />
     <ClInclude Include="gameblock.h" />
     <ClInclude Include="gameboard.h" />
-    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\ofApp.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofx2DFigures\src\BoundingBox.h" />
     <ClInclude Include="..\..\..\addons\ofx2DFigures\src\CollisionHelper.h" />
     <ClInclude Include="..\..\..\addons\ofx2DFigures\src\Figure.h" />
@@ -238,6 +249,10 @@
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReferenceTests.runsettings" />
+    <None Include="tests.runsettings" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
