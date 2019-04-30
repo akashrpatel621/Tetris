@@ -20,21 +20,21 @@ void Tetromino::reset()
 	CreateTetronimo(random);
 }
 
-//code derived from 
+//code for both rotations derived from 
 //https://stackoverflow.com/questions/233850/tetris-piece-rotation-algorithm.
 vector<GameBlock> Tetromino::Rotate()
 {
-	vector<GameBlock> rotatedTiles = tiles;
+	vector<GameBlock> rotated_tiles = tiles;
 
-	int X = rotatedTiles[0].x;
-	int Y = rotatedTiles[0].y;
+	int X = rotated_tiles[0].x;
+	int Y = rotated_tiles[0].y;
 
-	for (int i = 0; i < rotatedTiles.size(); i++) {
-		if (X > rotatedTiles[i].x) {
-			X = rotatedTiles[i].x;
+	for (int i = 0; i < rotated_tiles.size(); i++) {
+		if (X > rotated_tiles[i].x) {
+			X = rotated_tiles[i].x;
 		}
-		if (Y > rotatedTiles[i].y) {
-			Y = rotatedTiles[i].y;
+		if (Y > rotated_tiles[i].y) {
+			Y = rotated_tiles[i].y;
 		}
 	}
 
@@ -46,20 +46,93 @@ vector<GameBlock> Tetromino::Rotate()
 	int rotatedX;
 	int rotatedY;
 
-	for (int i = 0; i < rotatedTiles.size(); i++) {
+	for (int i = 0; i < rotated_tiles.size(); i++) {
 
-		translatedX = rotatedTiles[i].x - X;
-		translatedY = rotatedTiles[i].y - Y;
+		translatedX = rotated_tiles[i].x - X;
+		translatedY = rotated_tiles[i].y - Y;
 
 		rotatedX = translatedY;
 		rotatedY = translatedX * -1;
 
-		rotatedTiles[i].x = rotatedX + X;
-		rotatedTiles[i].y = rotatedY + Y;
+		rotated_tiles[i].x = rotatedX + X;
+		rotated_tiles[i].y = rotatedY + Y;
 	}
-	return rotatedTiles;
+	return rotated_tiles;
 }
 
+vector<GameBlock> Tetromino::RotateCCW()
+{
+
+	vector<GameBlock> rotated_tiles = tiles;
+	int originX = rotated_tiles[0].x;
+
+	int originY = rotated_tiles[0].y;
+
+
+
+	for (int i = 0; i < rotated_tiles.size(); i++) {
+
+		if (originX > rotated_tiles[i].x) {
+
+			originX = rotated_tiles[i].x;
+
+		}
+
+		if (originY > rotated_tiles[i].y) {
+
+			originY = rotated_tiles[i].y;
+
+		}
+
+	}
+
+
+
+	originX += GameBlock::k_width;
+
+	originY += GameBlock::k_height;
+
+
+
+	int translatedX, translatedY;
+
+	int rotatedX, rotatedY;
+
+
+
+	for (int i = 0; i < rotated_tiles.size(); i++) {
+
+
+
+		// Translate tile coordinates to rotation origin.
+
+		translatedX = rotated_tiles[i].x - originX;
+
+		translatedY = rotated_tiles[i].y - originY;
+
+
+
+		// Apply rotation matrix to translated coordinates.
+
+		rotatedX = translatedY * -1;
+
+		rotatedY = translatedX;
+
+
+
+		// Revert translation and apply new coordinates to tile.
+
+		rotated_tiles[i].x = rotatedX + originX;
+
+		rotated_tiles[i].y = rotatedY + originY;
+
+	}
+
+
+
+	return rotated_tiles;
+
+}
 
 vector<GameBlock> Tetromino::MoveLeft()
 {
@@ -117,8 +190,11 @@ bool Tetromino::LeftCollison(vector<GameBlock> transformedTiles, int width)
 		}
 		else {
 			
-			int x = transformedTiles[i].x / 40;
-			int y = transformedTiles[i].y / 40;
+			int x = (transformedTiles[i].x / 40);
+			int y = (transformedTiles[i].y / 40);
+			if (x >= 15) {
+				return true;
+			}
 			GameBlock t = GameBoard::board[x][y];
 			if (t.fill != ofColor::black) {
 				return true;
@@ -140,6 +216,9 @@ bool Tetromino::BottomCollison(vector<GameBlock> transformedTiles, int width)
 			
 			int x = transformedTiles[i].x / 40;
 			int y = transformedTiles[i].y / 40;
+			if (x >= 15) {
+				return true;
+			}
 			GameBlock t = GameBoard::board[x][y];
 			if (t.fill != ofColor::black) {
 				return true;

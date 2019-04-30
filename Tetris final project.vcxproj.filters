@@ -64,10 +64,10 @@
     <ClCompile Include="gameboard.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="tetronimo_shape.cpp">
+    <ClCompile Include="tetromino.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="tetromino.cpp">
+    <ClCompile Include="tetronimoshape.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,7 +161,7 @@
     <ClInclude Include="tetromino.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="tetronimo_shape.h">
+    <ClInclude Include="tetronimoshape.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

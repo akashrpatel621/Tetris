@@ -2,6 +2,7 @@
 
 int ofApp::numCols = 15;
 int ofApp::numRows = 23;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -34,12 +35,12 @@ void ofApp::update() {
 	TimeToString(ofGetElapsedTimef());
 	LevelToString(GameBoard::level);
 
-	if (GameBoard::gamespeed > 350) {
-		GameBoard::gamespeed = 350;
+	if (GameBoard::game_speed > max_game_speed) {
+		GameBoard::game_speed = 350;
 	}
-	if ((!gamePaused) && (!gameOver) && (ofGetElapsedTimeMillis() - frameNumber > speed + GameBoard::gamespeed)) {
+	if ((!gamePaused) && (!gameOver) && (ofGetElapsedTimeMillis() - frameNumber > speed + GameBoard::game_speed)) {
 		transformedTiles = tetromino.MoveDown();
-		if (!tetromino.BottomCollison(transformedTiles, 920)) {
+		if (!tetromino.BottomCollison(transformedTiles, GameBoard::k_height)) {
 			tetromino.tiles = transformedTiles;
 		}
 		else {
@@ -47,9 +48,9 @@ void ofApp::update() {
 				end();
 			}
 			tetromino.HandleBottomCollision(tetromino);
-			if (GameBoard::play_clear_sound == true) {
+			if (GameBoard::play_cleared_sound == true) {
 				soundclear.play();
-				GameBoard::play_clear_sound = false;
+				GameBoard::play_cleared_sound = false;
 			}
 			else {
 				sounddrop.play();
@@ -59,8 +60,7 @@ void ofApp::update() {
 		frameNumber = ofGetElapsedTimeMillis();
 	}
 	sound.setPaused(musicpuased);
-	sound.setSpeed(1 + GameBoard::soundspeed);	
-	std::cout << ofApp::level << endl;
+	sound.setSpeed(1 + GameBoard::sound_speed);
 }
 
 //--------------------------------------------------------------
@@ -115,6 +115,7 @@ void ofApp::end()
 	sound.stop();
 	game_over.draw(500, 0, 500, 500);
 	soundgameover.play();
+
 }
 
 //--------------------------------------------------------------
@@ -163,11 +164,23 @@ void ofApp::keyPressed(int key){
 		break;
 	}
 	switch (key) {
-	case ' ':
+	case OF_KEY_ALT:
 		transformedTiles = tetromino.Rotate();
 		bool left_collision = tetromino.LeftCollison(transformedTiles, 0);
 		bool right_collision = tetromino.RightCollison(transformedTiles, 600);
-		if (!left_collision && !left_collision) {
+		bool bottom = tetromino.BottomCollison(transformedTiles, 920);
+		if (!left_collision && !left_collision && !bottom) {
+			tetromino.tiles = transformedTiles;
+		}
+		break;
+	}
+	switch (key) {
+	case OF_KEY_CONTROL:
+		transformedTiles = tetromino.RotateCCW();
+		bool left_collision = tetromino.LeftCollison(transformedTiles, 0);
+		bool right_collision = tetromino.RightCollison(transformedTiles, 600);
+		bool bottom = tetromino.BottomCollison(transformedTiles, 920);
+		if (!left_collision && !left_collision && !bottom) {
 			tetromino.tiles = transformedTiles;
 		}
 		break;

@@ -2,7 +2,7 @@
 #include "ofMain.h"
 #include "gameblock.h"
 #include "gameboard.h"
-#include "tetronimo_shape.h"
+#include "tetronimoshape.h"
 
 
 
@@ -13,6 +13,7 @@ public:
 	void reset();
 
 	vector<GameBlock> Rotate();
+	vector<GameBlock> RotateCCW();
 	vector<GameBlock> MoveLeft();
 	vector<GameBlock> MoveRight();
 	vector<GameBlock> MoveDown();

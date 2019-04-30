@@ -3,13 +3,15 @@
 #include "ofMain.h"
 #include "C:\Users\akashpatel\Desktop\of_v0.10.1_vs2017_release\apps\myApps\Tetris final project\tetromino.h"
 
+
 class ofApp : public ofBaseApp{
 
 	public:
 		static int numCols;
 		static int numRows;
 		int speed;
-        //double time;
+	
+		const int max_game_speed = 350;
 
 		std::string score;
 		std::string time_elapsed;
@@ -47,13 +49,9 @@ class ofApp : public ofBaseApp{
 		ofImage background;
 		ofImage game_over;
 
-		
-
 		bool gamePaused;
 		bool gameOver;
 		bool musicpuased;
-
-		
 
 		unsigned long long frameNumber;
 };

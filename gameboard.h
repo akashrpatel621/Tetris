@@ -9,9 +9,9 @@ public:
 	static const int k_height;
 	static const int k_width;
 
-	static int gamespeed;
-	static double soundspeed;
-	static bool play_clear_sound;
+	static int game_speed;
+	static double sound_speed;
+	static bool play_cleared_sound;
 	static int score;
 	static int level;
 

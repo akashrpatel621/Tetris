@@ -6,9 +6,9 @@ vector< vector<GameBlock> > GameBoard::board;
 const int GameBoard::k_height = 920;
 const int GameBoard::k_width = 600;
 
-int GameBoard::gamespeed = 0;
-double GameBoard::soundspeed = 0;
-bool GameBoard::play_clear_sound = false;
+int GameBoard::game_speed = 0;
+double GameBoard::sound_speed = 0;
+bool GameBoard::play_cleared_sound = false;
 int GameBoard::score = 0;
 int GameBoard::level = 0;
 
@@ -50,18 +50,18 @@ void GameBoard::RemoveRow(int cols, int rows)
 {
 	int row_number;
 	for (int i = rows - 1; i >= 0; i--) {
-		bool isComplete = true;
+		bool row_filled = true;
 		for (int j = 0; j < cols; j++) {
 			if (board[j][i].fill == ofColor::black) {
-				isComplete = false;
+				row_filled = false;
 			}
 		}
-		if (isComplete) {
+		if (row_filled) {
 			GameBoard::SlideDown(i, cols);
 			i++;
-			GameBoard::gamespeed -= 50;
-			GameBoard::soundspeed += 0.10;
-			GameBoard::play_clear_sound = true;
+			GameBoard::game_speed -= 50;
+			GameBoard::sound_speed += 0.10;
+			GameBoard::play_cleared_sound = true;
 			row_number = 23 - i;
 			score += 40 * (row_number + 1);
 			level++;
