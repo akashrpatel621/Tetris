@@ -1,4 +1,4 @@
-#include "tetronimoshape.h"
+#include "tetrominoshape.h"
 
 static vector<vector<ofPoint>> tetromino_shape_points;
 
@@ -20,20 +20,6 @@ vector<ofPoint> Shape::GetRandomShape()
 		O.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
 		tetromino_shape_points.push_back(O);
 
-		vector<ofPoint> T;
-		T.push_back(ofPoint(0, GameBlock::k_height));
-		T.push_back(ofPoint(GameBlock::k_width, 0));
-		T.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
-		T.push_back(ofPoint(GameBlock::k_width * 2, GameBlock::k_height));
-		tetromino_shape_points.push_back(T);
-			   
-		vector<ofPoint> J;
-		J.push_back(ofPoint(GameBlock::k_width, 0));
-		J.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
-		J.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height * 2));
-		J.push_back(ofPoint(0, GameBlock::k_height * 2));
-		tetromino_shape_points.push_back(J);
-
 		vector<ofPoint> L;
 		L.push_back(ofPoint(0, 0));
 		L.push_back(ofPoint(0, GameBlock::k_height));
@@ -41,12 +27,19 @@ vector<ofPoint> Shape::GetRandomShape()
 		L.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height * 2));
 		tetromino_shape_points.push_back(L);
 
-		vector<ofPoint> S;
-		S.push_back(ofPoint(0, GameBlock::k_height));
-		S.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
-		S.push_back(ofPoint(GameBlock::k_width, 0));
-		S.push_back(ofPoint(GameBlock::k_width * 2, 0));
-		tetromino_shape_points.push_back(S);
+		vector<ofPoint> J;
+		J.push_back(ofPoint(GameBlock::k_width, 0));
+		J.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
+		J.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height * 2));
+		J.push_back(ofPoint(0, GameBlock::k_height * 2));
+		tetromino_shape_points.push_back(J);
+
+		vector<ofPoint> T;
+		T.push_back(ofPoint(0, GameBlock::k_height));
+		T.push_back(ofPoint(GameBlock::k_width, 0));
+		T.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
+		T.push_back(ofPoint(GameBlock::k_width * 2, GameBlock::k_height));
+		tetromino_shape_points.push_back(T);
 
 		vector<ofPoint> Z;
 		Z.push_back(ofPoint(0, 0));
@@ -54,6 +47,13 @@ vector<ofPoint> Shape::GetRandomShape()
 		Z.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
 		Z.push_back(ofPoint(GameBlock::k_width * 2, GameBlock::k_height));
 		tetromino_shape_points.push_back(Z);
+
+		vector<ofPoint> S;
+		S.push_back(ofPoint(0, GameBlock::k_height));
+		S.push_back(ofPoint(GameBlock::k_width, GameBlock::k_height));
+		S.push_back(ofPoint(GameBlock::k_width, 0));
+		S.push_back(ofPoint(GameBlock::k_width * 2, 0));
+		tetromino_shape_points.push_back(S);
 	}
 	int random_shap_index = ofRandom(0, tetromino_shape_points.size());
 	return tetromino_shape_points[random_shap_index];

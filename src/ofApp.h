@@ -7,15 +7,15 @@
 class ofApp : public ofBaseApp{
 
 	public:
-		static int numCols;
-		static int numRows;
-		int speed;
+		static int num_cols; 
+		static int num_rows;
+		int speed; // Speed that is initially set for the start of the game.
 	
-		const int max_game_speed = 350;
+		const int max_game_speed = 350; // Max speed the tetrominoes can fall at. 
 
-		std::string score;
-		std::string time_elapsed;
-		std::string level;
+		std::string score; // represents the current score during the game.
+		std::string time_elapsed; // Represents the time elapsed during the game.
+		std::string level; // Represents the current level during the game. 
 
 		void setup();
 		void update();
@@ -33,15 +33,17 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		void convertToString(int score);
-		void TimeToString(double time);
-		void LevelToString(int level);
+
+		// Convert integers and doubles and save them as class data members. 
+		void convertToString(int score); 
+		void TimeToString(double time); 
+		void LevelToString(int level); 
 
 		Tetromino tetromino;
 
 		ofSoundPlayer sound;
-		ofSoundPlayer soundclear;
-		ofSoundPlayer sounddrop;
+		ofSoundPlayer row_cleared_sound;
+		ofSoundPlayer tetromino_set_sound;
 		ofSoundPlayer soundgameover;
 		
 		ofTrueTypeFont font;
@@ -49,10 +51,10 @@ class ofApp : public ofBaseApp{
 		ofImage background;
 		ofImage game_over;
 
-		bool gamePaused;
-		bool gameOver;
-		bool musicpuased;
+		bool gamePaused; // True if game is paused. 
+		bool gameOver; // True if game is over. 
+		bool music_paused; // True if music is paused. 
 
-		unsigned long long frameNumber;
+		unsigned long long frame_number;
 };
 

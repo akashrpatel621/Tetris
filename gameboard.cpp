@@ -12,11 +12,11 @@ bool GameBoard::play_cleared_sound = false;
 int GameBoard::score = 0;
 int GameBoard::level = 0;
 
-void GameBoard::InitiateBoard(int col, int row)
+void GameBoard::InitiateBoard(int num_col, int num_row)
 {
-	for (int i = 0; i < col; i++) {
+	for (int i = 0; i < num_col; i++) {
 		vector<GameBlock> board_row;
-		for (int j = 0; j < row; j++) {
+		for (int j = 0; j < num_row; j++) {
 			board_row.push_back(GameBlock(ofPoint(i * GameBlock::k_width, j * GameBlock::k_height), ofColor::black));
 		}
 		board.push_back(board_row);

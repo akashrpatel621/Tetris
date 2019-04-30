@@ -67,7 +67,7 @@
     <ClCompile Include="tetromino.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="tetronimoshape.cpp">
+    <ClCompile Include="tetrominoshape.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -161,7 +161,7 @@
     <ClInclude Include="tetromino.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="tetronimoshape.h">
+    <ClInclude Include="tetrominoshape.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

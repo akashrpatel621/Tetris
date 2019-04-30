@@ -26,155 +26,119 @@ vector<GameBlock> Tetromino::Rotate()
 {
 	vector<GameBlock> rotated_tiles = tiles;
 
-	int X = rotated_tiles[0].x;
-	int Y = rotated_tiles[0].y;
+	int initial_x = rotated_tiles[0].x;
+	int initial_y = rotated_tiles[0].y;
 
 	for (int i = 0; i < rotated_tiles.size(); i++) {
-		if (X > rotated_tiles[i].x) {
-			X = rotated_tiles[i].x;
+		if (initial_x > rotated_tiles[i].x) {
+			initial_x = rotated_tiles[i].x;
 		}
-		if (Y > rotated_tiles[i].y) {
-			Y = rotated_tiles[i].y;
+		if (initial_y > rotated_tiles[i].y) {
+			initial_y = rotated_tiles[i].y;
 		}
 	}
 
-	X += GameBlock::k_width;
-	Y += GameBlock::k_height;
+	initial_x += GameBlock::k_width;
+	initial_y += GameBlock::k_height;
 
-	int translatedX;
-	int translatedY;
-	int rotatedX;
-	int rotatedY;
+	int translated_x;
+	int translated_y;
+	int rotated_x;
+	int rotated_y;
 
 	for (int i = 0; i < rotated_tiles.size(); i++) {
 
-		translatedX = rotated_tiles[i].x - X;
-		translatedY = rotated_tiles[i].y - Y;
+		translated_x = rotated_tiles[i].x - initial_x;
+		translated_y = rotated_tiles[i].y - initial_y;
 
-		rotatedX = translatedY;
-		rotatedY = translatedX * -1;
+		rotated_x = translated_y;
+		rotated_y = translated_x * -1;
 
-		rotated_tiles[i].x = rotatedX + X;
-		rotated_tiles[i].y = rotatedY + Y;
+		rotated_tiles[i].x = rotated_x + initial_x;
+		rotated_tiles[i].y = rotated_y + initial_y;
 	}
 	return rotated_tiles;
 }
 
 vector<GameBlock> Tetromino::RotateCCW()
 {
-
 	vector<GameBlock> rotated_tiles = tiles;
-	int originX = rotated_tiles[0].x;
 
-	int originY = rotated_tiles[0].y;
-
-
+	int initial_x = rotated_tiles[0].x;
+	int initial_y = rotated_tiles[0].y;
 
 	for (int i = 0; i < rotated_tiles.size(); i++) {
-
-		if (originX > rotated_tiles[i].x) {
-
-			originX = rotated_tiles[i].x;
-
+		if (initial_x > rotated_tiles[i].x) {
+			initial_x = rotated_tiles[i].x;
 		}
-
-		if (originY > rotated_tiles[i].y) {
-
-			originY = rotated_tiles[i].y;
-
+		if (initial_y > rotated_tiles[i].y) {
+			initial_y = rotated_tiles[i].y;
 		}
-
 	}
 
+	initial_x += GameBlock::k_width;
+	initial_y += GameBlock::k_height;
 
+	int translated_x;
+	int translated_y;
 
-	originX += GameBlock::k_width;
-
-	originY += GameBlock::k_height;
-
-
-
-	int translatedX, translatedY;
-
-	int rotatedX, rotatedY;
-
-
+	int rotated_x;
+	int rotated_y;
 
 	for (int i = 0; i < rotated_tiles.size(); i++) {
+		translated_x = rotated_tiles[i].x - initial_x;
+		translated_y = rotated_tiles[i].y - initial_y;
 
+		rotated_x = translated_y * -1;
+		rotated_y = translated_x;
 
-
-		// Translate tile coordinates to rotation origin.
-
-		translatedX = rotated_tiles[i].x - originX;
-
-		translatedY = rotated_tiles[i].y - originY;
-
-
-
-		// Apply rotation matrix to translated coordinates.
-
-		rotatedX = translatedY * -1;
-
-		rotatedY = translatedX;
-
-
-
-		// Revert translation and apply new coordinates to tile.
-
-		rotated_tiles[i].x = rotatedX + originX;
-
-		rotated_tiles[i].y = rotatedY + originY;
-
+		rotated_tiles[i].x = rotated_x + initial_x;
+		rotated_tiles[i].y = rotated_y + initial_y;
 	}
-
-
-
 	return rotated_tiles;
-
 }
 
 vector<GameBlock> Tetromino::MoveLeft()
 {
-	vector<GameBlock> translatedTiles = tiles;
+	vector<GameBlock> translated_tiles = tiles;
 
-	for (int i = 0; i < translatedTiles.size(); i++) {
-		translatedTiles[i].x = translatedTiles[i].x - GameBlock::k_width;
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		translated_tiles[i].x = translated_tiles[i].x - GameBlock::k_width;
 	}
-	return translatedTiles;
+	return translated_tiles;
 }
 
 vector<GameBlock> Tetromino::MoveRight()
 {
-	vector<GameBlock> translatedTiles = tiles;
+	vector<GameBlock> translated_tiles = tiles;
 
-	for (int i = 0; i < translatedTiles.size(); i++) {
-		translatedTiles[i].x += GameBlock::k_width;
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		translated_tiles[i].x += GameBlock::k_width;
 	}
-	return translatedTiles;
+	return translated_tiles;
 }
 
 vector<GameBlock> Tetromino::MoveDown()
 {
-	vector<GameBlock> translatedTiles = tiles;
+	vector<GameBlock> translated_tiles = tiles;
 
-	for (int i = 0; i < translatedTiles.size(); i++) {
-		translatedTiles[i].y += GameBlock::k_height;
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		translated_tiles[i].y += GameBlock::k_height;
 	}
-	return translatedTiles;
+	return translated_tiles;
 }
 
-bool Tetromino::RightCollison(vector<GameBlock> transformedTiles, int width)
+bool Tetromino::RightCollision(vector<GameBlock> translated_tiles, int width)
 {
-	for (int i = 0; i < transformedTiles.size(); i++) {
-		if (transformedTiles[i].x >= width) {
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		if (translated_tiles[i].x >= width) {
 			return true;
 		}
 		else {
-			int x = transformedTiles[i].x / 40;
-			int y = transformedTiles[i].y / 40;
-			GameBlock t = GameBoard::board[x][y];
-			if (t.fill != ofColor::black) {
+			int x = translated_tiles[i].x / 40;
+			int y = translated_tiles[i].y / 40;
+			GameBlock temp = GameBoard::board[x][y];
+			if (temp.fill != ofColor::black) {
 				return true;
 			}
 		}
@@ -182,21 +146,21 @@ bool Tetromino::RightCollison(vector<GameBlock> transformedTiles, int width)
 	return false;
 }
 
-bool Tetromino::LeftCollison(vector<GameBlock> transformedTiles, int width)
+bool Tetromino::LeftCollision(vector<GameBlock> translated_tiles, int width)
 {
-	for (int i = 0; i < transformedTiles.size(); i++) {
-		if (transformedTiles[i].x < 0) {
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		if (translated_tiles[i].x < 0) {
 			return true;;
 		}
 		else {
-			
-			int x = (transformedTiles[i].x / 40);
-			int y = (transformedTiles[i].y / 40);
+			int x = (translated_tiles[i].x / 40);
+			int y = (translated_tiles[i].y / 40);
+
 			if (x >= 15) {
 				return true;
 			}
-			GameBlock t = GameBoard::board[x][y];
-			if (t.fill != ofColor::black) {
+			GameBlock temp = GameBoard::board[x][y];
+			if (temp.fill != ofColor::black) {
 				return true;
 			}
 		}
@@ -204,23 +168,22 @@ bool Tetromino::LeftCollison(vector<GameBlock> transformedTiles, int width)
 	return false;
 }
 
-bool Tetromino::BottomCollison(vector<GameBlock> transformedTiles, int width)
+bool Tetromino::BottomCollision(vector<GameBlock> translated_tiles, int width)
 {
-	
-	for (int i = 0; i < transformedTiles.size(); i++) {
-		if (transformedTiles[i].y >= width) {
+	for (int i = 0; i < translated_tiles.size(); i++) {
+		if (translated_tiles[i].y >= width) {
 			return true; // there is a collision on the bottom.
 		}
 		else
 		{
-			
-			int x = transformedTiles[i].x / 40;
-			int y = transformedTiles[i].y / 40;
+			int x = translated_tiles[i].x / 40;
+			int y = translated_tiles[i].y / 40;
+
 			if (x >= 15) {
 				return true;
 			}
-			GameBlock t = GameBoard::board[x][y];
-			if (t.fill != ofColor::black) {
+			GameBlock temp = GameBoard::board[x][y];
+			if (temp.fill != ofColor::black) {
 				return true;
 			}
 		}
@@ -243,7 +206,7 @@ void Tetromino::HandleBottomCollision(Tetromino tetromino)
 	for (int i = 0; i < tetromino.tiles.size(); i++) {
 		GameBoard::board[tetromino.tiles[i].x / GameBlock::k_width][tetromino.tiles[i].y / GameBlock::k_height].fill = tetromino.tiles[i].fill;
 	}
-	GameBoard::RemoveRow(ofApp::numCols , ofApp::numRows);
+	GameBoard::RemoveRow(ofApp::num_cols , ofApp::num_rows);
 }
 
 ofColor Tetromino::TetrominoColor()
@@ -265,7 +228,7 @@ void Tetromino::CreateTetronimo(vector<ofPoint> randomshape)
 {
 	ofColor random_color = TetrominoColor();
 	for (int i = 0; i < randomshape.size(); i++) {
-		tiles.push_back(GameBlock(ofPoint(randomshape[i].x + 240, randomshape[i].y), random_color, ofColor::white));
+		tiles.push_back(GameBlock(ofPoint(randomshape[i].x + k_middle_x_coordinate, randomshape[i].y), random_color, ofColor::white));
 	}
 }
 
