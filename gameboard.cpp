@@ -63,7 +63,7 @@ void GameBoard::RemoveRow(int cols, int rows)
 			GameBoard::sound_speed += 0.10;
 			GameBoard::play_cleared_sound = true;
 			row_number = 23 - i;
-			score += 40 * (row_number + 1);
+			score += (40 * (row_number + 1)) * (level + 1);
 			level++;
 
 		}
