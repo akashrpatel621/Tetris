@@ -89,4 +89,7 @@
 - Put a cap on the max speed for which the tetrominoes can be dropped at. 
 - Added a sound effect to be played once the game has ended. 
 - Added final adjustments and commented for better readability.
- 
+- Changed how points are given in the game. 
+- Completed the README file for the project.
+
+## Completed and submitted the project - May 1st, 2019.
