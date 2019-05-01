@@ -173,7 +173,7 @@ void ofApp::keyPressed(int key){
 		break;
 	}
 	switch (key) {
-	case OF_KEY_ALT:
+	case 'a':
 		transformed_tiles = tetromino.Rotate();
 
 		bool left_collision = tetromino.LeftCollision(transformed_tiles, 0);
@@ -186,7 +186,7 @@ void ofApp::keyPressed(int key){
 		break;
 	}
 	switch (key) {
-	case OF_KEY_CONTROL:
+	case 's':
 		transformed_tiles = tetromino.RotateCCW();
 
 		bool left_collision = tetromino.LeftCollision(transformed_tiles, 0);
