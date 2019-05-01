@@ -1,6 +1,6 @@
-#Development Log
+# Development Log
 
-##Progress - April 9th, 2019
+## Progress - April 9th, 2019
 - Created the project proposal and noted down a couple of libraries that can be used to to create Tetris.
 - Set up a sample project and opened a blank window with out crashing using OpenGL with GLFW.
 - Read the documentation for OpenFrameworks. 
@@ -10,7 +10,7 @@
 - Create a game block that will be used throughout the implemtation of Tetris.
 - Create a game board.
 
-##Progress - April 16th, 2019
+## Progress - April 16th, 2019
 - loaded background for the tetris game and scaled the size for it to be seen in the window.
 - Created the GameBlock class.
   - 40 by 40 square.
@@ -26,7 +26,7 @@
 - Get the tetrominoes to generate on the screen.
 - Be able to control the terominoes on the game board by moving them right, left, and down. 
 
-##Progress - April 23rd, 2019
+## Progress - April 23rd, 2019
 - Created tetrominoshape class
   - contains methods that generate all seven game blocks and then returns a random one.
 - Created tetromino class.
@@ -45,7 +45,7 @@
 - Create a loop to generate new tetromines at a set time interval automatically.
 - Test all fuctions that can be tested
  
- ##Progress - April 25th, 2019
+ ## Progress - April 25th, 2019
  - Able to make the tetrominoes stay on the game board.
    - created a collision handler which changed the color of the game board to the color of the tetromino. 
    - Collision handeling was only implemented when the tetromino hit the bottom of the grid. 
