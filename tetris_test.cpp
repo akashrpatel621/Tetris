@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 #include "catch.h"
-#include "gameboard.h"
-#include "tetromino.h"
+#include "gameboard.hpp"
+#include "tetromino.hpp"
 
 //Testing initiation of game board.
 TEST_CASE("Error in initiating game board") {

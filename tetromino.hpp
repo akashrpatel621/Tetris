@@ -1,8 +1,8 @@
 #pragma once
 //#include "ofMain.h"
-#include "gameblock.h"
-#include "gameboard.h"
-#include "tetrominoshape.h"
+#include "gameblock.hpp"
+#include "gameboard.hpp"
+#include "tetrominoshape.hpp"
 
 class Tetromino {
 public:

@@ -1,4 +1,4 @@
-#include "tetrominoshape.h"
+#include "tetrominoshape.hpp"
 
 static vector<vector<ofPoint>> tetromino_shape_points;
 

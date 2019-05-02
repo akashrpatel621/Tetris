@@ -1,5 +1,5 @@
 #pragma once
-#include "gameblock.h"
+#include "gameblock.hpp"
 
 class GameBoard {
 

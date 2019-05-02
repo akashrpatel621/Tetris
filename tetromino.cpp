@@ -1,4 +1,4 @@
-#include "tetromino.h"
+#include "tetromino.hpp"
 #include "ofApp.h"
 
 Tetromino::Tetromino()

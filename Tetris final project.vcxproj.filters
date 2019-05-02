@@ -155,19 +155,19 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
-    <ClInclude Include="gameboard.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="gameblock.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="tetromino.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="tetrominoshape.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="catch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="tetrominoshape.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="tetromino.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="gameboard.hpp">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="gameblock.hpp">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

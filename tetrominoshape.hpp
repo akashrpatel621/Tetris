@@ -1,6 +1,6 @@
 #pragma once
 #include "ofMain.h"
-#include "gameblock.h"
+#include "gameblock.hpp"
 
 class Shape {
 public:

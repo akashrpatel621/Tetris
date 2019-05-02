@@ -1,5 +1,5 @@
 
-#include "gameboard.h"
+#include "gameboard.hpp"
 
 vector< vector<GameBlock> > GameBoard::board;
 

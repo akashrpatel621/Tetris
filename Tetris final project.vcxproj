@@ -211,8 +211,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="catch.h" />
-    <ClInclude Include="gameblock.h" />
-    <ClInclude Include="gameboard.h" />
+    <ClInclude Include="gameblock.hpp" />
+    <ClInclude Include="gameboard.hpp" />
     <ClInclude Include="src\ofApp.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -235,8 +235,8 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
-    <ClInclude Include="tetromino.h" />
-    <ClInclude Include="tetrominoshape.h" />
+    <ClInclude Include="tetromino.hpp" />
+    <ClInclude Include="tetrominoshape.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

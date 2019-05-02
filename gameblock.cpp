@@ -1,4 +1,4 @@
-#include "gameblock.h"
+#include "gameblock.hpp"
 
 GameBlock::GameBlock(ofPoint point, ofColor fill_color, ofColor outline_color)
 {
