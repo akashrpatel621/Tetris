@@ -29,13 +29,12 @@ void ofApp::setup(){
 void ofApp::update() {
 	vector<GameBlock> transformed_tiles;
 	
-	//Convert integers to strings to print out.
-	convertToString(GameBoard::score);
-	LevelToString(GameBoard::level);
+	ofApp::score = std::to_string((int)GameBoard::score);
+	ofApp::level = std::to_string((int)GameBoard::level);
 
 	// Updating time elapsed.
 	if (!gameOver && !gamePaused) {
-		TimeToString(ofGetElapsedTimef());
+		ofApp::time_elapsed = std::to_string((double) ofGetElapsedTimef());
 	}
 
 	//Set a max speed for the rate the tetrominoes fall. 
@@ -198,29 +197,6 @@ void ofApp::keyPressed(int key){
 		}
 		break;
 	}
-}
-//--------------------------------------------------------------
-void ofApp::convertToString(int score)
-{
-	int num = score;
-	ostringstream str1;
-	str1 << num;
-	ofApp::score = str1.str();
-}
-//---------------------------------------------------------------
-void ofApp::TimeToString(double time)
-{
-	double num = time;
-	ostringstream str1;
-	str1 << num;
-	ofApp::time_elapsed = str1.str();
-}
-void ofApp::LevelToString(int level)
-{
-	int num = level;
-	ostringstream str1;
-	str1 << num;
-	ofApp::level = str1.str();
 }
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){

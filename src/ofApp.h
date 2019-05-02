@@ -34,22 +34,16 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		// Convert integers and doubles and save them as class data members. 
-		void convertToString(int score); 
-		void TimeToString(double time); 
-		void LevelToString(int level); 
-
 		Tetromino tetromino;
 
-		ofSoundPlayer sound;
-		ofSoundPlayer row_cleared_sound;
-		ofSoundPlayer tetromino_set_sound;
-		ofSoundPlayer soundgameover;
+		ofSoundPlayer sound; // Sound for background/
+		ofSoundPlayer row_cleared_sound; // Sound object for cleared row sound effect.
+		ofSoundPlayer tetromino_set_sound; // Sound object for tetromino set sound effect.
+		ofSoundPlayer soundgameover; // Sound object for gameover sound effect.
 		
 		ofTrueTypeFont font;
 
 		ofImage background;
-		ofImage game_over;
 
 		bool gamePaused; // True if game is paused. 
 		bool gameOver; // True if game is over. 
